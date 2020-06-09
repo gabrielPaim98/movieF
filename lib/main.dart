@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'consts/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,9 +10,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-       primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: KDark,
+        primaryColor: KDarker,
+        accentColor: KWhiter,
+        textTheme: Theme.of(context).textTheme.apply(
+          fontFamily: 'Gilroy',
+          bodyColor: KWhiter,
+          displayColor: KWhiter,
+          decorationColor: KWhiter,
+        ),
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
