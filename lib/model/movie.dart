@@ -48,15 +48,10 @@ class Movie {
     var body;
     await http.get('https://api.themoviedb.org/3/movie/popular?api_key=92617104f2646d905240d1f828861df6&language=en-US&page=1').then(
             (value) => body = jsonDecode(value.body)['results']
-      //popMovies.addAll(jsonDecode(value.body)['results'])
     );
     movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
-    //var a = await compute(_computeMovies, body['results']);
-    print(movies[0].toJson());
     return movies;
   }
-
-  List<Movie> _computeMovies(dynamic body) => List<Movie>.from(body.map((movie) => Movie.fromJson(movie)));
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
     popularity: json["popularity"].toDouble(),

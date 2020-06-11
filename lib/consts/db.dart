@@ -7,3 +7,4 @@ const String tvShows_details = 'https://api.themoviedb.org/3/tv/1234?api_key=926
 const String MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
 const String TV_URL = 'https://api.themoviedb.org/3/tv/';
 const String API_KEY = '92617104f2646d905240d1f828861df6';
+const String POSTER_PATH = 'https://image.tmdb.org/t/p/w500';
