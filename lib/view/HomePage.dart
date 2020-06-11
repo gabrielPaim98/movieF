@@ -12,18 +12,12 @@ class _HomePageState extends State<HomePage> {
 
   Future<List<MovieCard>> _getMovies() async {
     movieCards.clear();
-    await Movie.fetchPopularMovies().then(
+    await Movie().fetchPopularMovies().then(
             (value) => value.forEach((e) {
-              print(e.toJson());
               movieCards.add(MovieCard(title: e.title, voteAverage: e.voteAverage, overview: 'des'));
             })
     );
     return movieCards;
-  }
-
-  @override
-  void initState() {
-    _getMovies();
   }
 
   @override
@@ -33,9 +27,6 @@ class _HomePageState extends State<HomePage> {
           title: Text('movieF'),
           centerTitle: true,
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () async{
-          Movie.fetchPopularMovies().then((value) => print(value[0].toJson()));
-        }),
         body: SingleChildScrollView(
           child: FutureBuilder<List<MovieCard>>(
               future: _getMovies(),
@@ -44,7 +35,6 @@ class _HomePageState extends State<HomePage> {
                 );
               }),
         )
-      // MovieCard(title: 'Titulo', overview: 'Descricao', voteAverage: 7,),
     );
   }
 }
@@ -57,7 +47,7 @@ class MovieCard extends StatelessWidget {
   });
 
   final String title;
-  final int voteAverage;
+  final String voteAverage;
   final String overview;
 
   @override
@@ -98,7 +88,7 @@ class MovieCard extends StatelessWidget {
                     color: KDark,
                     fontSize: 17,
                   )),
-              Text(voteAverage.toString(),
+              Text(voteAverage,
                   style: TextStyle(
                     color: KDark,
                     fontSize: 17,

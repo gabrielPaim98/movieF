@@ -3,6 +3,7 @@
 //     final movie = movieFromJson(jsonString);
 
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 Movie movieFromJson(String str) => Movie.fromJson(json.decode(str));
@@ -38,19 +39,24 @@ class Movie {
   String originalTitle;
   List<int> genreIds;
   String title;
-  int voteAverage;
+  String voteAverage;
   String overview;
   DateTime releaseDate;
 
-  static Future<List<Movie>> fetchPopularMovies() async{
-    List<Movie> movies = List<Movie>();
+  Future<List<Movie>> fetchPopularMovies() async{
+    List<Movie> movies;
+    var body;
     await http.get('https://api.themoviedb.org/3/movie/popular?api_key=92617104f2646d905240d1f828861df6&language=en-US&page=1').then(
-            (value) => movies.add(Movie.fromJson(jsonDecode(value.body)['results'][0]))
+            (value) => body = jsonDecode(value.body)['results']
       //popMovies.addAll(jsonDecode(value.body)['results'])
     );
-
+    movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+    //var a = await compute(_computeMovies, body['results']);
+    print(movies[0].toJson());
     return movies;
   }
+
+  List<Movie> _computeMovies(dynamic body) => List<Movie>.from(body.map((movie) => Movie.fromJson(movie)));
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
     popularity: json["popularity"].toDouble(),
@@ -64,7 +70,7 @@ class Movie {
     originalTitle: json["original_title"],
     genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
     title: json["title"],
-    voteAverage: json["vote_average"],
+    voteAverage: json["vote_average"].toString(),
     overview: json["overview"],
     releaseDate: DateTime.parse(json["release_date"]),
   );
