@@ -43,10 +43,10 @@ class Movie {
   String overview;
   DateTime releaseDate;
 
-  Future<List<Movie>> fetchPopularMovies() async{
+  Future<List<Movie>> fetchPopularMovies(int page) async{
     List<Movie> movies;
     var body;
-    await http.get('https://api.themoviedb.org/3/movie/popular?api_key=92617104f2646d905240d1f828861df6&language=en-US&page=1').then(
+    await http.get('https://api.themoviedb.org/3/movie/popular?api_key=92617104f2646d905240d1f828861df6&language=en-US&page=$page').then(
             (value) => body = jsonDecode(value.body)['results']
     );
     movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
