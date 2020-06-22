@@ -18,6 +18,12 @@ dependencies:
   flutter_blurhash: ^0.5.0
   transparent_image: ^1.0.0
   youtube_player_flutter: ^7.0.0+5
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path: "assets/launcher/movieF.png"
 
 dev_dependencies:
   flutter_test:
