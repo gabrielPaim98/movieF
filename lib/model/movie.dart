@@ -53,6 +53,26 @@ class Movie {
     return movies;
   }
 
+  Future<List<Movie>> fetchPlayingMovies(int page) async{
+    List<Movie> movies;
+    var body;
+    await http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=92617104f2646d905240d1f828861df6&language=en-US&page=$page').then(
+            (value) => body = jsonDecode(value.body)['results']
+    );
+    movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+    return movies;
+  }
+
+  Future<List<Movie>> fetchUpcomingMovies(int page) async{
+    List<Movie> movies;
+    var body;
+    await http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=92617104f2646d905240d1f828861df6&language=en-US&page=$page').then(
+            (value) => body = jsonDecode(value.body)['results']
+    );
+    movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+    return movies;
+  }
+
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
     popularity: json["popularity"].toDouble(),
     voteCount: json["vote_count"],
