@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../consts/colors.dart';
 import '../consts/db.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
@@ -32,9 +33,20 @@ class MovieCard extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.horizontal(left: Radius.circular(12)),
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w500/$posterPath',
-              fit: BoxFit.fitWidth,
+            child: Stack(
+              children: <Widget>[
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.35,
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: 'https://image.tmdb.org/t/p/w500/$posterPath',
+                  fit: BoxFit.fitWidth,
+                ),
+              ],
             ),
           ),
           Container(
@@ -75,23 +87,24 @@ class MovieCard extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.005,
                 ),
                 Expanded(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(
-                      Icons.star,
-                      color: KGold,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Text(voteAverage,
-                        style: TextStyle(
-                          color: KDark,
-                          fontSize: 17,
-                        )),
-                  ],
-                )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.star,
+                        color: KGold,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.01,
+                      ),
+                      Text(voteAverage,
+                          style: TextStyle(
+                            color: KDark,
+                            fontSize: 17,
+                          )),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
