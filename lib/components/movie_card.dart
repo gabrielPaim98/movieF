@@ -57,7 +57,9 @@ class MovieCard extends StatelessWidget {
                   FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
                     image: 'https://image.tmdb.org/t/p/w500/$posterPath',
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width * 0.35,
+                    height: double.infinity,
                   ),
                 ],
               ),
