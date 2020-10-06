@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movief/view/custom_drawer.dart';
 import '../components/movie_card.dart';
 import '../model/movie.dart';
 
 class HomePage extends StatefulWidget {
+  static const route = 'home_page';
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -136,8 +139,9 @@ class _HomePageState extends State<HomePage>
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        drawer: CustomDrawer(),
         appBar: AppBar(
-          title: Text('movieF'),
+          title: Text('MovLib'),
           centerTitle: true,
           bottom: TabBar(
             tabs: [

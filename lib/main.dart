@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movief/view/login_screen.dart';
 import 'view/home_page.dart';
 import 'consts/colors.dart';
 
@@ -22,7 +23,11 @@ class MyApp extends StatelessWidget {
           decorationColor: KWhiter,
         ),
       ),
-      home: HomePage(),
+      routes: {
+        HomePage.route: (context) => HomePage(),
+        LoginScreen.route: (context) => LoginScreen()
+      },
+      initialRoute: LoginScreen.route,
     );
   }
 }
