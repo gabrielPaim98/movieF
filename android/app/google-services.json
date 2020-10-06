@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "930331216249",
+    "firebase_url": "https://movlib.firebaseio.com",
+    "project_id": "movlib",
+    "storage_bucket": "movlib.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930331216249:android:98b34e68ad5257733787a8",
+        "android_client_info": {
+          "package_name": "com.gabrielPaim98.movief"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930331216249-f8nn5p03fdcmsslblooiuchfda27gvqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gabrielPaim98.movief",
+            "certificate_hash": "e715b7c5ff0ebd293efc7fa6244c9624b94149b6"
+          }
+        },
+        {
+          "client_id": "930331216249-i2q9ugmn379b6ctfau0e6md18q5691jp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVUWfDc2_DIckBrqvE7oe-xeFRrA9CE_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930331216249-i2q9ugmn379b6ctfau0e6md18q5691jp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

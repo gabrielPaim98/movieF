@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movief/consts/colors.dart';
+import 'package:movief/service/sign_in.dart';
 import 'package:movief/view/home_page.dart';
+import 'package:movief/view_model/login_view_model.dart';
 
 class LoginScreen extends StatelessWidget {
   static const route = 'login_screen';
@@ -21,16 +23,14 @@ class LoginScreen extends StatelessWidget {
             Text('Entre com ums das opções abaixo', style: TextStyle(fontSize: 18),),
             Spacer(),
             GestureDetector(
-              onTap: () {
-                Navigator.popAndPushNamed(context, HomePage.route);
-              },
+              onTap: LoginViewModel.loginWithGoogle(context),
               child: Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: KWhite,
                   borderRadius: BorderRadius.all(Radius.circular(20))
                 ),
-                child: Icon(Icons.login_outlined, color: KDarker,),
+                child: Image.asset('assets/images/google_logo.png', width: 32,),
               ),
             ),
             Spacer(flex: 3,)
